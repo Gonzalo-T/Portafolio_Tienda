@@ -1,0 +1,70 @@
+use test1; 
+
+drop table Productos;
+go
+
+CREATE TABLE Productos (
+    ProductoId int NOT NULL IDENTITY(1,1) Primary key,
+	Nombre VARCHAR (20) NOT NULL,
+	Descripcion VARCHAR (500) NOT NULL,
+    Precio varchar(10) NOT NULL,
+	Imagen varbinary(MAX) NOT NULL
+)
+go
+
+--------------------------------------------------------------------------------
+
+
+drop proc IngresarProducto;
+go
+
+
+
+create proc IngresarProducto(
+    
+
+    @Nombre VARCHAR (20) ,
+    @Descripcion VARCHAR (500) ,
+	@Precio varchar(10),
+	@Imagen varchar(max)
+
+	)
+	
+AS
+
+if (not exists(select 1 from Productos ))
+begin 
+      
+        DECLARE @ruta varchar(1000)
+		set @ruta = 'C:\Users\001044655\Desktop\duoc\PROYECTO TIENDA\TiendaUltimo\TiendaUltimoOtro\Tienda\Tienda\Tienda\Content\img\'
+        Declare @Variable varchar(2000)
+        set @Variable = 'INSERT INTO Productos (Nombre, Descripcion, Precio, Imagen)' +
+		N'SELECT'''+@Nombre+''','''+@Descripcion+''','''+@Precio+''', CAST(BulkColumn AS varbinary(MAX)) FROM OPENROWSET( Bulk'''+@ruta +@Imagen+ ''', SINGLE_BLOB) AS Image'
+          DBCC CHECKIDENT ('Productos', RESEED, 0);
+		  end
+		  if (exists(select * from Productos where Nombre=@Nombre ))
+		  select '1'
+		  else
+		  EXEC (@Variable);
+		  select '2'
+if (exists(select 1 from Productos ))
+begin
+		set @ruta = 'C:\Users\001044655\Desktop\duoc\PROYECTO TIENDA\TiendaUltimo\TiendaUltimoOtro\Tienda\Tienda\Tienda\Content\img\'
+        set @Variable = 'INSERT INTO Productos (Nombre, Descripcion, Precio, Imagen)' +
+		N'SELECT'''+@Nombre+''','''+@Descripcion+''','''+@Precio+''', CAST(BulkColumn AS varbinary(MAX)) FROM OPENROWSET( Bulk'''+@ruta +@Imagen+ ''', SINGLE_BLOB) AS Image'
+end
+		  if (exists(select * from Productos where Nombre=@Nombre ))
+		  select '1'
+		  else
+		   EXEC (@Variable);
+	
+		  select '2'
+GO
+
+----------------------------------------------------------------------------------------------
+
+
+
+	select* from Productos;
+
+	DELETE FROM Productos;

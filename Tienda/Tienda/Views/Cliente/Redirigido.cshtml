@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Redirigido";
+    Layout = "~/Views/Shared/_LayoutRegistrarCliente.cshtml";
+}
+
+<h2>Redirigido</h2>
+
+<script>
+
+                    setTimeout(function () {
+                        window.location.href = "#openModal";
+                    }, 0);
+                    setTimeout(function () {
+                        window.location.href = "@Url.Action("LoginCliente","Cliente")";
+                    }, 5000);
+</script>
+
+<div id="openModal" class="modalDialog">
+    <div>
+        <!--Button trigger modal
+        <a href="#close" title="Close" class="close">X</a>-->
+        <h2 style="text-align:center">¡¡Felicidades!! </h2>
+        <h2 style="text-align:center">Se ha registrado con éxito</h2>
+        <p style="text-align:center">Ha sido redirigido automaticamente para su inicio de sesión</p>
+    </div>
+</div>

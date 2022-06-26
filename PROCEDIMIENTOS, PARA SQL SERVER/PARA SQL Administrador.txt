@@ -1,0 +1,46 @@
+use test1;
+go
+drop table administrador;
+go
+
+//CREA LA TABLA DE ADMINISTRADOR
+
+CREATE TABLE administrador (
+    Rut int PRIMARY KEY NOT NULL ,
+    Correo VARCHAR (30) NOT NULL,
+    Nombre_usuario VARCHAR (20) NOT NULL,
+    Nombre VARCHAR (15) NOT NULL,
+    Fecha_nacimiento VARCHAR (10) NOT NULL,
+    Direccion VARCHAR(50) NOT NULL,
+    Estado_civil VARCHAR (15) NOT NULL,
+    Contrasena VARCHAR (500) NOT NULL
+)
+go
+
+drop proc ValidarAdministrador;
+go
+
+//CREA EL PROCEDIMIENTO ALMACENADO PARA EL LOGEO
+
+create proc ValidarAdministrador(
+@Correo VARCHAR (30),
+@Contrasena VARCHAR (500)
+)
+AS
+BEGIN
+
+	if(exists(select * from administrador where Correo=@Correo and Contrasena=@Contrasena))
+	Select Rut from administrador where Correo=@Correo and Contrasena=@Contrasena
+	else
+	select'0'
+END
+
+select * from administrador
+
+//INSERTAR DATOS DIRECTAMENTE DE LA BASE DE DATOS, USAR UN ENCRIPTADOR DE CLABE SHA 256 PARA PROTEGER LA CLAVE
+
+INSERT INTO administrador (Rut,Correo, Nombre_usuario, Nombre, Fecha_nacimiento, Direccion,	Estado_civil, Contrasena)
+VALUES(18184521,'JuanCarlos@gmail.com','JuanAdmin','Juan','12/04/1965','Los cipreces #1034','Soltero','5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5');
+GO
+
+

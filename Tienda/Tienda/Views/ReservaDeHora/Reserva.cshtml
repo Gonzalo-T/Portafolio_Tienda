@@ -1,0 +1,172 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+
+
+<center>
+    <div class="container" style="background-color: whitesmoke; color: darkolivegreen; width:60%;  border-radius : 1%">
+
+
+
+        <h2 class="text-center">Registrar Hora</h2>
+        <br>
+
+        <form action="@Url.Action("Reserva", "ReservaDeHora")" method="post">
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Id Cliente:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Nombre.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="number" name="Rut" class="form-control input_user" value="@ViewBag.userRut" placeholder="Miguel Montecinos" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Correo Electrónico:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/correo.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="email" name="Correo" class="form-control input_user" value="@ViewBag.user" placeholder="Correo" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Fecha de Reserva:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/fecha.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" autocomplete="off" id="Fecha" placeholder="Fecha" name="Fecha" class="form-control input_user" required>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="Hora" style="text-align:center">Hora de reserva:</label>
+
+                    <div class="input-group" style="color: red;">
+
+
+                        <select name="Hora" id="Hora" class="form-control input_user" required>
+                            <option hidden selected>Seleccione Hora de su reserva</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    @if (ViewData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+
+                        </div>
+                        
+
+                    }
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button type="submit" name="button" class="btn btn-primary">
+
+                        Registrar Hora
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+       <!----> <p>Si tienes una reserva agendada, <a style=color: black; border-radius: 10%" href="ListadoReserva?Rut=@ViewBag.userRut">Revisala aquí</a></p>
+
+
+
+
+    </div>
+
+    
+
+</center>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+
+<script type="text/javascript">
+
+    var disableddates = ["8-3-2017", "12-11-2016", "8-25-2017", "8-20-2017", "5-6-2022", "6-5-2022"];
+
+    function DisableSpecificDates(date) {
+
+        var m = date.getMonth();
+        var d = date.getDate();
+        var y = date.getFullYear();
+        var currentdate = (m + 1) + '-' + d + '-' + y;
+
+        for (var i = 0; i < disableddates.length; i++) {
+            if ($.inArray(currentdate, disableddates) != -1) {
+                return [false];
+            }
+        }
+
+        return disableddates;
+    }
+
+    $(function () {
+        $.datepicker.setDefaults($.datepicker.regional["ch"]);
+        $("#Fecha").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            changeYear: false,
+            yearRange: "2022:2022",
+            firstDay: 1,
+            minDate: 0, /** AAAA,MM,DD Fecha inicio */
+            maxDate: new Date(2022, 12, 31), /** AAAA,MM,DD Fecha Fin */
+
+            monthNames: ['Enero', 'Febrero', 'Marzo',
+                'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+                'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            beforeShowDay: DisableSpecificDates
+        });
+    });
+</script>

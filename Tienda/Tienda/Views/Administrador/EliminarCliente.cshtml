@@ -1,0 +1,159 @@
+﻿@model Tienda.Models.Cliente
+
+@{
+    Layout = "~/Views/Shared/_LayoutLoginAdministrador.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<center>
+    <div class="container" style="background-color: whitesmoke; color: darkolivegreen; width:60%;  border-radius : 1%">
+
+
+
+        <h2 class="text-center">Eliminar Empleado</h2>
+        <br>
+
+        <form action="@Url.Action("EliminarCliente", "Administrador")" method="post">
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Rut del Cliente:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/correo.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="number" name="Rut" class="form-control input_user" value="@Model.Rut" placeholder="Correo" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Correo Electrónico:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/correo.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="email" name="Correo" class="form-control input_user" value="@Model.Correo" placeholder="Correo" required readonly/>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Nombre de usuario (nickname):</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/nombreUsuario.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Nombre_usuario" class="form-control input_user" value="@Model.Nombre_usuario" placeholder="Nombre de usuario" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Nombre y Apellido:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Nombre.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Nombre" class="form-control input_user" value="@Model.Nombre" placeholder="Miguel Montecinos" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Fecha de Nacimiento:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/fecha.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Fecha_nacimiento" class="form-control input_user" value="@Model.Fecha_nacimiento" placeholder="12/04/1990" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Dirección:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Direccion.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Direccion" class="form-control input_user" value="@Model.Direccion" placeholder="Las papas 435, Santiago" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Estado Civil:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Estado.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Estado_civil" class="form-control input_user" value="@Model.Estado_civil" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button type="submit" name="button" class="btn btn-primary">
+
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        
+
+
+    </div>
+
+
+
+</center>
+

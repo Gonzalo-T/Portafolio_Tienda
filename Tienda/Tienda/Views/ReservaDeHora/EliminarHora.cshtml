@@ -1,0 +1,110 @@
+﻿@model Tienda.Models.ReservaDeHora
+
+@{
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<center>
+    <div class="container" style="background-color: whitesmoke; color: darkolivegreen; width:60%;  border-radius : 1%">
+
+
+
+        <h2 class="text-center">Confirmar la eliminación de su hora</h2>
+        <br>
+
+        <form action="@Url.Action("EliminarHora", "ReservaDeHora")" method="post">
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Rut del Cliente:</label>
+
+                    <div class="input-group">
+
+
+                        <input  style="text-align:center" type="number" name="Rut" class="form-control input_user" value="@Model.Rut" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Correo Electrónico:</label>
+
+                    <div class="input-group">
+
+
+                        <input style="text-align:center" type="email" name="Correo" class="form-control input_user" value="@Model.Correo" required readonly />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Fecha:</label>
+
+                    <div class="input-group">
+
+
+                        <input style="text-align:center" type="text" name="Fecha" class="form-control input_user" value="@Model.Fecha" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Hora:</label>
+
+                    <div class="input-group">
+
+
+                        <input style="text-align:center" type="text" name="Hora" class="form-control input_user" value="@Model.Hora" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button type="submit" name="button" class="btn btn-danger">
+
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+    </div>
+
+
+
+</center>
+

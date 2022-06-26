@@ -1,0 +1,142 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutLoginEmpleado.cshtml";
+}
+
+<center>
+    <div class="contenedor">
+
+        <div style="background-color: whitesmoke; padding: 3%; width: 50%; border-radius: 1%">
+            <div class="title">
+                <div style="font-size: large">Formulario para subir producto</div>
+
+            </div>
+            <br />
+
+
+
+            <form id="Producto" action="@Url.Action("IngresarProducto","Empleado")" method="post">
+
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label style="text-align:center">Nombre:</label>
+                        <input type="text" class="form-control"  name="Nombre" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Precio">Precio:</label>
+                        <input type="number" class="form-control" id="Precio" name="Precio" maxlength="8" oninput="onlyK(value)" required>
+
+
+                    </div>
+                    
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="Imagen">Imagen:</label>
+                        <input type="file" class="form-control"  name="Imagen" required>
+                    </div>
+                </div>
+
+
+                    <div class="form-group">
+                        <label>Descripcion:<span class="red">*</span></label>
+                        <textarea class="form-control"  name="Descripcion" rows="3" required></textarea>
+                    </div>
+
+                    @if (ViewData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+                        </div>
+                    }
+
+                    <br>
+
+                    <div class="col-12">
+                        <button type="submit" name="button" class="btn btn-primary" style="background-color: darkslategray;">
+                            <!--el "primary" al lado del btn es lo que le da el color.
+                Los colores que representa la palabra sale en bootstrap: colors-->
+                            Registrar Producto
+                        </button>
+                    </div>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+</center>
+
+<script>
+    function onlyK(inputVal) {
+        var patt = /^[0,1,2,3,4,5,6,7,8,9]+$/;
+        if (patt.test(inputVal)) {
+            document.getElementById('Precio').value = inputVal;
+        }
+        else {
+            var txt = inputVal.slice(0, -1);
+            document.getElementById('Precio').value = txt;
+        }
+
+    }
+    $(document).ready(function () {
+        $("#Producto").validate({
+            rules: {
+                Nombre: {
+                    required: true,
+                    maxlength: 20
+
+                },
+
+                Precio: {
+                    required: true,
+                    maxlength: 8,
+                    number: true
+
+                },
+
+                Imagen: {
+                    required: true
+                },
+
+                Descripcion: {
+                    required: true,
+                    maxlength: 35
+                }
+
+
+            },
+            messages: {
+                Nombre: {
+                    required: "Por favor ingrese Nombre del producto",
+                    maxlength: "Máximo 20 carácteres"
+                },
+                Precio: {
+                    required: "Por favor ingrese valor de producto",
+                    maxlength: "Valor maximo 8 dígitos"
+                },
+
+                Imagen: {
+                    required: "Por favor Inserte una imagen"
+                   
+                },
+
+                Descripcion: {
+                    required: "Por favor ingrese Descripcion",
+                    maxlength: "Debe contener maximo 35 caracteres"
+
+                }
+
+
+            }
+
+
+        });
+
+
+    });
+</script>

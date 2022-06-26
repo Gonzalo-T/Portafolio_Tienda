@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Tienda.Models.ReservaDeHora>
+
+@{
+    ViewBag.Title = "ListadoEmpleados";
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2 style="color: white; text-align:center">Información de su hora reservada</h2>
+<div style="background-color: whitesmoke; color: darkolivegreen; width:100%;  border-radius : 1%">
+
+
+
+    <table class="table" >
+        <thead>
+            <tr  >
+                <th  style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Rut)
+                </th>
+                <th  style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th >
+                <th  style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th >
+                <th  style="text-align: center">
+                    @Html.DisplayNameFor(model => model.Hora)
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align: center">
+                <td >
+                    @Html.DisplayFor(modelItem => item.Rut)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Hora)
+                </td>
+                <td>
+
+
+                    <a style="background-color: rgb(55 65 81); color: white;border-radius: 10% " href="EliminarHora?Rut=@item.Rut"> Elimine su hora</a>
+                </td>
+                
+
+                
+            </tr>
+        }
+
+    </table>
+
+
+</div>
+

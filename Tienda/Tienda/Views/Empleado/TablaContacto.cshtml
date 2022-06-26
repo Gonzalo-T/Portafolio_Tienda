@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Tienda.Models.Contacto>
+
+@{
+    ViewBag.Title = "TablaContacto";
+    Layout = "~/Views/Shared/_LayoutLoginEmpleado.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2 style="color: white; text-align:center">Listado de Consultas y sugerencias</h2>
+<div class="table" style="background-color: whitesmoke; color: darkolivegreen; width:100%;  border-radius : 1%">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mensaje)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensaje)
+                </td>
+
+
+
+                <td>
+
+
+                    <a style="background-color: darkred; color: white; border-radius: 10%" href="EliminarContacto?Id=@item.Id"> Eliminar</a>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>

@@ -1,0 +1,82 @@
+use test1;
+go
+
+CREATE TABLE Empleado (
+    Rut int PRIMARY KEY NOT NULL ,
+    DigitoVerificador VARCHAR (1) NOT NULL,
+    Correo VARCHAR (50) NOT NULL,
+    Nombre_usuario VARCHAR (20) NOT NULL,
+    Nombre VARCHAR (15) NOT NULL,
+    Fecha_nacimiento VARCHAR (10) NOT NULL,
+    Direccion VARCHAR(50) NOT NULL,
+    Estado_civil VARCHAR (15) NOT NULL,
+    Contrasena VARCHAR (500) NOT NULL
+)
+go
+
+
+create proc RegistrarEmpleado(
+    @Rut int,
+    @DigitoVerificador VARCHAR (1),
+    @Correo VARCHAR (50),
+    @Nombre_usuario VARCHAR (20),
+    @Nombre VARCHAR (15),
+    @Fecha_nacimiento VARCHAR (10),
+    @Direccion VARCHAR(50),
+    @Estado_civil VARCHAR (15),
+    @Contrasena VARCHAR (500)
+	)
+AS
+BEGIN
+
+	if(not exists(select * from Empleado where Rut=@Rut))
+	begin
+        INSERT INTO Empleado(Rut,DigitoVerificador,Correo,Nombre_usuario, Nombre,Fecha_nacimiento,Direccion,Estado_civil,Contrasena)
+	 VALUES(@Rut,@DigitoVerificador,@Correo,@Nombre_usuario, @Nombre,@Fecha_nacimiento,@Direccion,@Estado_civil,@Contrasena)
+	 end
+END
+GO
+
+
+drop proc RegistrarEmpleado;
+go
+
+//-----------------PROCEDIMIENTO PARA LOGIN--------------
+
+create proc ValidarEmpleado(
+@Correo VARCHAR (50),
+@Contrasena VARCHAR (500)
+)
+AS
+BEGIN
+
+	if(exists(select * from Empleado where Correo=@Correo and Contrasena=@Contrasena))
+	Select Rut from Empleado where Correo=@Correo and Contrasena=@Contrasena
+	else
+	select'0'
+END
+drop proc ValidarEmpleado;
+
+select * from empleado;
+
+
+//--------------------ACTUALIZAR EMPLEADO--------------------
+
+create proc ActualizarEmpleado(
+    @Correo VARCHAR (50),
+    @Nombre_usuario VARCHAR (20),
+    @Nombre VARCHAR (15),
+    @Fecha_nacimiento VARCHAR (10),
+    @Direccion VARCHAR(50),
+    @Estado_civil VARCHAR (15),
+	@Rut int
+
+	)
+AS
+	update Empleado set Correo = @Correo, Nombre_usuario = @Nombre_usuario, Nombre = @Nombre, Fecha_nacimiento = @Fecha_nacimiento, 
+	Direccion = @Direccion, Estado_civil = @Estado_civil where Rut = @Rut
+
+GO
+
+drop proc ActualizarEmpleado;
+go

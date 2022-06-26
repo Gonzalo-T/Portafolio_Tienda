@@ -1,0 +1,362 @@
+﻿@model Tienda.Models.Empleado
+
+@{
+    Layout = "~/Views/Shared/_LayoutLoginAdministrador.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<center>
+    <div class="container" style="background-color: whitesmoke; color: darkolivegreen; width:60%;  border-radius : 1%">
+
+
+
+        <h2 class="text-center">Registro Empleado</h2>
+        <br>
+
+        <form id="basic-form" action="@Url.Action("RegistrarEmpleado","Administrador")" method="post">
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center" (required)>Rut:</label>
+
+                    <div class="input-group">
+
+
+                        <input type="number" name="Rut" class="form-control input_user" placeholder="Sin puntos ni dv, Ej: 18948394 " required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Digito Verificador:</label>
+
+                    <div class="input-group">
+
+
+                        <input type="text" id="txtK" name="DigitoVerificador" class="form-control input_user" maxlength="1" value="" placeholder="Ejemplo: k / Ejemplo: 4" oninput="onlyK(value)" required>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Correo Electrónico:</label>
+
+                    <div class="input-group">
+
+
+                        <input type="email" name="Correo" class="form-control input_user" value="" placeholder="Correo" required>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Nombre de usuario (nickname):</label>
+
+                    <div class="input-group">
+
+
+                        <input type="text" name="Nombre_usuario" class="form-control input_user" value="" placeholder="Nombre de usuario" required>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Nombre y Apellido:</label>
+
+                    <div class="input-group">
+
+
+                        <input type="text" name="Nombre" class="form-control input_user" value="" placeholder="Miguel Montecinos" required>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Fecha de Nacimiento:</label>
+
+                    <div class="input-group" style="color: red;">
+
+                        <!--<span class="input-group-addon">
+                <img src="~/Content/img/fecha.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+            </span>-->
+                        <input type="date" name="Fecha_nacimiento" class="form-control input_user" value="" placeholder="12/04/1990" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Dirección:</label>
+
+                    <div class="input-group">
+
+
+                        <input type="text" name="Direccion" class="form-control input_user" value="" placeholder="Las papas 435, Santiago" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="Estado" style="text-align:center">Estado Civil:</label>
+
+                    <div class="input-group" style="color: red;">
+
+                        <!--<span class="input-group-addon">
+                <img src="~/Content/img/Estado.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+            </span>-->
+                        <!--<input type="text" name="Estado_civil" class="form-control input_user" value="" placeholder="Soltero" required>-->
+
+                        <select name="Estado_civil" id="Estado" class="form-control input_user" required>
+
+                            <option value="Soltero">Soltero</option>
+                            <option value="Casado">Casado</option>
+                            <option value="Divorciado">Divorciado</option>
+                            <option value="Viudo">Viudo</option>
+                            <option value="Union civil">Union civil</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-lg-12 -mb3">
+                    <label style="text-align:center">Contraseña:</label>
+
+                    <div class="input-group" style="display:flex; justify-content:center">
+
+                        <span class="input-group-addon ">
+                            <img src="~/Content/img/contrasena.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="password" name="Contrasena" class="form-control input_user" value="" placeholder="Contraseña" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label style="text-align:center">Confirmar Contraseña:</label>
+
+                    <div class="input-group " style="display:flex; justify-content:center">
+
+                        <span class="input-group-addon ">
+                            <img src="~/Content/img/contrasena.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="password" name="ConfirmarContrasena" class="form-control input_pass" value="" placeholder="Confirmar Contraseña" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    @if (ViewData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+
+                        </div>
+
+
+
+                    }
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button type="submit" name="button" class="btn btn-primary">
+
+                        Registrarse
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+    </div>
+
+
+
+</center>
+
+<script>
+    function onlyK(inputVal) {
+        var patt = /^[Kk,0,1,2,3,4,5,6,7,8,9]+$/;
+        if (patt.test(inputVal)) {
+            document.getElementById('txtK').value = inputVal;
+        }
+        else {
+            var txt = inputVal.slice(0, -1);
+            document.getElementById('txtK').value = txt;
+        }
+
+    }
+    $(document).ready(function () {
+        $("#basic-form").validate({
+            rules: {
+                Rut: {
+                    required: true,
+                    minlength: 7,
+                    maxlength: 8,
+                    number: true
+
+
+                },
+                DigitoVerificador: {
+                    required: true,
+                    minlength: 1,
+                    maxlength: 1
+
+                },
+
+                Correo: {
+                    required: true,
+                    email: true,
+                    maxlength: 50
+                },
+
+                Nombre_usuario: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 20
+                },
+
+                Nombre: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 15
+                },
+
+                Fecha_nacimiento: {
+                    required: true,
+                    min: "1899/12/31",
+                    max: "2005/01/01"
+                },
+
+                Direccion: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 50
+                },
+
+                Estado_civil: {
+                    required: true,
+                    maxlength: 15
+                },
+
+                Contrasena: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 15
+                },
+
+                ConfirmarContrasena: {
+                    required: true,
+                    maxlength: 15
+                }
+
+
+
+            },
+            messages: {
+                Rut: {
+                    required: "Por favor ingrese su Rut",
+                    minlength: "Ingrese al menos 7 digitos",
+                    maxlength: "No debe sobrepasar los 8 digitos",
+                    number: "Por favor ingrese solo numeros"
+                },
+                DigitoVerificador: {
+                    required: "Por favor ingrese su Digito V",
+                    minlength: "Ingrese 0 al 9 ó letra K",
+                    maxlength: "No puede ingresar mas de 1 caracter"
+
+                },
+
+                Correo: {
+                    required: "Por favor ingrese su Email",
+                    email: "Debe contener el Arroba ej: juan@gmail.com ",
+                    maxlength: "Máximo 50 caracteres Nombre usuario"
+                },
+
+                Nombre_usuario: {
+                    required: "Por favor ingrese su nombre de usuario",
+                    minlength: "Ingrese al menos 3 caracteres",
+                    maxlength: "Máximo 20 caracteres Nombre usuario"
+                },
+
+                Nombre: {
+                    required: "Por favor ingrese su nombre de usuario",
+                    minlength: "Ingrese al menos 6 caracteres",
+                    maxlength: "Máximo 15 caracteres Nombre y Apellido"
+                },
+
+                Fecha_nacimiento: {
+                    required: "Por favor ingrese su Fecha de nacimiento",
+                    min: "Fecha de nacimiento comienza en 1900 mínimo",
+                    max: "Debe tener mínimo 17 años"
+
+                },
+
+                Direccion: {
+                    required: "Por favor ingrese su Direccion",
+                    minlength: "Mínimo 5 caracteres",
+                    maxlength: "Máximo 50 caracteres"
+                },
+
+                Estado_civil: {
+                    required: "Por favor ingrese su Estado civil",
+                    maxlength: "Máximo 15 caracteres"
+                },
+
+                Contrasena: {
+                    required: "Por favor ingrese su Contraseña",
+                    minlength: "Contraseña Mínimo 10 caracteres",
+                    maxlength: "Máximo 15 caracteres"
+                },
+
+                ConfirmarContrasena: {
+                    required: "Por favor ingrese su Contraseña",
+                    maxlength: "Máximo 15 caracteres"
+                }
+
+
+            }
+
+
+        });
+
+
+    });</script>
+
+
+
+

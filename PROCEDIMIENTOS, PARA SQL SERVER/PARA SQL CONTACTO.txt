@@ -1,0 +1,41 @@
+use test1;
+go
+ 
+CREATE TABLE Contacto (
+    Id int not null IDENTITY(1,1) Primary key,
+    Nombre VARCHAR (15) NOT NULL ,
+	Apellido VARCHAR (15) NOT NULL,
+    Correo VARCHAR (50) NOT NULL,
+    Telefono int NOT NULL,
+	Mensaje VARCHAR (500) NOT NULL
+)
+go
+
+
+create proc RegistrarContacto(
+    
+    @Nombre VARCHAR (15) ,
+	@Apellido VARCHAR (15) ,
+    @Correo VARCHAR (50) ,
+    @Telefono int ,
+	@Mensaje VARCHAR (500)
+
+	)
+AS
+if (not exists(select 1 from Contacto ))
+begin
+          DBCC CHECKIDENT ('Contacto', RESEED, 0);
+		  INSERT INTO Contacto( Nombre,Apellido,Correo,Telefono, Mensaje)
+	      VALUES( @Nombre,@Apellido,@Correo,@Telefono, @Mensaje)
+		  end
+
+else 
+          
+	   INSERT INTO Contacto( Nombre,Apellido,Correo,Telefono, Mensaje)
+	 VALUES( @Nombre,@Apellido,@Correo,@Telefono, @Mensaje)	 
+	
+
+GO
+
+
+select * from contacto;

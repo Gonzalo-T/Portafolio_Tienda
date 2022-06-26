@@ -1,0 +1,163 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+<div class="medbox">
+    <div class="text" style=" text-align: center; width: 30%; color: white;">
+        <h1 style=" font-size: 3vw;">
+            ¡Atiéndete con nosotros!
+        </h1>
+        <h4 style=" font-size: 1.5vw;">
+            En Taller Unique, proporcionamos la mejor experiencia posible en la venta de productos textiles,
+            y en la reparación, arreglos o ajustes de prendas, con una decidida orientación a la excelencia,
+            al trabajo bien hecho con transparencia y el trato cercano y personalizado con nuestros clientes.
+        </h4>
+    </div>
+
+
+    <div class="carrusel container" style="width: 70%; ">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <center>
+                        <img src="~/Content/img/confeccion.jpg" style="width:70%; height:300px; border-radius: 1%;" alt="...">
+                    </center>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>CONFECCIONES</h5>
+                        <p>Gran variedad de estilos en nuestras confecciones</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <center>
+                        <img src="~/Content/img/productos.jpg" style="width:70%; height:300px; border-radius: 1%; " alt="...">
+                    </center>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>PRODUCTOS</h5>
+                        <p>Contamos con una gran variedad de productos para usted</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <center>
+                        <img src="~/Content/img/diseno.jpg" style="width:70%; height:300px; border-radius: 1%;" alt="...">
+                    </center>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>NUESTRAS PRENDAS</h5>
+                        <p>Tenemos nuestras propias prendas de vestir con diversos estilos</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span style="background-color:rgb(55 65 81); width: 80px; height:80px; border-radius: 1%" class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span style="background-color:rgb(55 65 81); width: 80px; height:80px; border-radius: 1%" class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!--    MAPA   -->
+<div class="mapa">
+    <div class="mapbox" id='map' style="width: 50%; height: 300px; border-radius: 1%;"></div>
+
+    <div style="width: 50%;">
+        <h3>
+            Ubica nuestra sucursal en Vicuña Mackenna 690, Melipilla, RM
+        </h3>
+        <br>
+        <h4>
+            ATENDEMOS:
+        </h4>
+        <h4>
+            Lu-Vi | 9AM-1PM; 2PM-6PM
+        </h4>
+        <h4>
+            Sa | 10AM-1PM; 2PM-4PM
+        </h4>
+
+    </div>
+</div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZW50aWUiLCJhIjoiY2twajJycGN6MTR1MTJ2bzllYTZtbnAzcCJ9.JcnL9u1fz4LfhXr5Th1L6g';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-71.215741, -33.679449],
+        zoom: 15
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());
+
+    map.on("load", function () {
+        /* Image: An image is loaded and added to the map. */
+        map.loadImage("https://i.imgur.com/MK4NUzI.png", function (error, image) {
+            if (error) throw error;
+            map.addImage("custom-marker", image);
+            /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
+            map.addLayer({
+                id: "markers",
+                type: "symbol",
+                /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
+                source: {
+                    type: "geojson",
+                    data: {
+                        type: 'FeatureCollection',
+                        features: [
+                            {
+                                type: 'Feature',
+                                properties: {},
+                                geometry: {
+                                    type: "Point",
+                                    coordinates: [-71.215741, -33.679449],
+                                }
+                            }
+                        ]
+                    }
+                },
+                layout: {
+                    "icon-image": "custom-marker",
+                }
+            });
+        });
+    });
+</script>
+
+<center style="color: white">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Crea</h2>
+            <p>
+                Gracias a la gran variedad de productos que le ofrecemos,
+                usted podrá realizar diversos trabajos, ya sea para sus arregos
+                de sus prendas o su propia confección.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Vive</h2>
+            <p>
+                Podrás explorar un mundo de diversos materiales y colores para tí,
+                integrando la mejor calidad en nuestros productos .
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Confecciona</h2>
+            <p>
+                En nuestra oficina podemos confeccionar la prenda que gustes,
+                sin que tengas que moverte de tu hogar.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>
+</center>

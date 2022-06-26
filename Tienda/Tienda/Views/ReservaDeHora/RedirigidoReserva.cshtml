@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Redirigido";
+    Layout = Layout = "~/Views/Shared/_LayoutRegistrarCliente.cshtml"; ;
+}
+
+<h2>Redirigido</h2>
+
+<script>
+
+                    setTimeout(function () {
+                        window.location.href = "#openModal";
+                    }, 0);
+                    setTimeout(function () {
+                        window.location.href = "@Url.Action("Reserva","ReservaDeHora")";
+                    }, 3000);
+</script>
+
+<div id="openModal" class="modalDialog">
+    <div>
+        <!--Button trigger modal-->
+        <!--<a href="#close" title="Close" class="close">X</a>-->
+        <h2 style="text-align:center">¡¡Hora eliminada!! </h2>
+        <h2 style="text-align:center">Volviendo a su registro de hora</h2>
+      
+    </div>
+</div>

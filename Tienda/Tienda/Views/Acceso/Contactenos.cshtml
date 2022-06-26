@@ -1,0 +1,153 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutServiciosRegistrado.cshtml";
+}
+
+<div><br /><br /><br /><br /><br /><br /><br /></div>
+
+<center>
+    <div class="contenedor">
+
+        <div style="background-color: whitesmoke; padding: 3%; width: 50%; border-radius: 1%">
+            <div class="title">
+                <div style="font-size: large">Contactenos con sus datos y sugerencias</div>
+
+                <div style="font-size: large">     Le responderemos a la brevedad</div>
+
+
+
+            </div>
+
+
+
+            <form action="@Url.Action("Contactenos", "Acceso")" method="post">
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label style="text-align:center">Nombre:</label>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="apellido">Apellidos:</label>
+                        <input type="text" class="form-control" id="Apellido" name="Apellido" required>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="correo">Email:</label>
+                        <input type="email" class="form-control" id="Correo" name="Correo" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="number" class="form-control" id="Telefono" name="Telefono" min="900000000" max="999999999" required="" oninvalid="setCustomValidity('Ingrese 9 digitos comenzando por el 9')" oninput="setCustomValidity('')">
+                        
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>Mensaje:<span class="red">*</span></label>
+                    <textarea class="form-control" id="Mensaje" name="Mensaje" rows="3" min="25" required></textarea>
+                </div>
+
+                
+                <br>
+
+                <div class="col-12">
+                    <button type="submit" name="button" class="btn btn-primary" style="background-color: darkslategray;">
+                        <!--el "primary" al lado del btn es lo que le da el color.
+                        Los colores que representa la palabra sale en bootstrap: colors-->
+                        ENVIAR
+                    </button>
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+</center>
+
+
+<script>
+    $(document).ready(function () {
+        $("#RegistrarContacto1").validate({
+            rules: {
+                Nombre: {
+                    required: true,
+                    maxlength: 15
+
+                },
+                Apellido: {
+                    required: true,
+                    maxlength: 15
+
+                },
+
+                Correo: {
+                    required: true,
+                    maxlength: 50,
+                    email: true
+                },
+
+                Telefono: {
+                    required: true,
+                    min: 900000000,
+                    max: 999999999,
+                    minlength: 9,
+                    number: true
+                },
+
+                Mensaje: {
+                    required: true,
+                    maxlength: 500
+                }
+
+
+
+            },
+            messages: {
+                Nombre: {
+                    required: "Por favor ingrese su Nombre",
+                    maxlength: "Máximo 15 carácteres"
+                },
+                Apellido: {
+                    required: "Por favor ingrese su Apellido",
+                    maxlength: "Máximo 15 carácteres"
+                },
+
+                Correo: {
+                    required: "Por favor ingrese su Email",
+                    email: "Debe contener el Arroba ej: juan@gmail.com "
+                },
+
+                Telefono: {
+                    required: "Por favor ingrese N° Telefónico",
+                    min: "Debe comenzar con un 9",
+                    max: "Debe contener 9 digitos",
+                    minlength: "Debe contener 9 digitos",
+                    number: "Ingrese solo numeros"
+
+                },
+
+                Mensaje: {
+                    required: "Por favor ingrese su Mensaje",
+                    maxlength: "Máximo 500 caracteres"
+                }
+
+
+            }
+
+
+        });
+
+
+    });
+</script>

@@ -1,0 +1,401 @@
+﻿body {
+    padding-top: 0px;
+    background-image: url(img/fondo.jpg);
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+}
+
+footer > p {
+    color: white;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+
+
+/*para que se adecue a las pantallas*/
+
+@media (max-width: 1500.98px) {
+    .contenedor {
+        width: 995px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .contenedor {
+        width: 800px;
+    }
+}
+
+@media (max-width: 800.98px) {
+    .contenedor {
+        width: 100%
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor {
+        width: 80%
+    }
+}
+
+
+@media (max-width: 1500.98px) {
+    .boton {
+        width: 400px;
+        border-radius: 10%;
+    }
+
+    .imagen {
+        width: 350px;
+        border-radius: 100%;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .boton {
+        width: 400px;
+    }
+
+    .imagen {
+        width: 300px;
+        border-radius: 100%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .boton {
+        width: 80%;
+    }
+
+    .imagen {
+        width: 80%;
+        border-radius: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .boton {
+        width: 50%;
+    }
+
+    .imagen {
+        width: 50%
+    }
+}
+
+
+
+
+
+
+
+
+/*Para animar el texto*/
+.efecto {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    color: white !important;
+    animation: typing 3s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
+    text-decoration: none;
+}
+
+.Normal {
+    text-decoration: none;
+    color: white !important;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/*Para que el nav quede fijo*/
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.classname {
+    background: url(img/candando.png) no-repeat top left;
+    display: block;
+    width: 150px;
+    height: 150px;
+    text-indent: -9999px; /* hides the link text */
+}
+
+
+
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+    .modalDialog:target {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: #fff;
+        background: -moz-linear-gradient(#fff, #999);
+        background: -webkit-linear-gradient(#fff, #999);
+        background: -o-linear-gradient(#fff, #999);
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+    }
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+    .close:hover {
+        background: #00d9ff;
+    }
+
+
+
+
+/*body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+    */
+
+.header {
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    flex-direction: row;
+}
+
+.welcome {
+    padding-top: 2%;
+}
+
+.state {
+    padding-top: 2%;
+    padding-left: 53%;
+}
+
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 447px;
+}
+
+.navbar {
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 100%;
+    background-color: black;
+}
+
+.catchphrase {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.mapa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    /*background-color: darkslategray;*/
+    color: white;
+    text-align: center;
+}
+
+/*.mapbox {
+    border-style: solid;
+    border-color: darkslategray;
+    border-width: 5px;
+}*/
+
+.medbox {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    padding: 5px;
+    font-size: 2vw;
+}
+
+/*
+.container-body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-color: darkslategray;
+    border-style: solid;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-width: 5px;
+}
+*/
+
+.colum1 h1 {
+    font-size: 22px;
+}
+
+.colum1 p {
+    font-size: 14px;
+}
+
+
+
+.colum2 h1 {
+    font-size: 22px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+    .row img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .row label {
+        margin-top: 10px;
+        margin-left: 20px;
+        color: darkslategray;
+    }
+
+.colum3 h1 {
+    font-size: 22px;
+}
+
+
+
+.row2 img {
+    width: 36px;
+    height: 36px;
+}
+
+.contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    padding: 2%;
+    color: white;
+    background-color: darkslategray;
+}
+
+
+.container-footer {
+    width: 100%;
+    background-color: darkslategray;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright {
+    color: white;
+}
+
+    .copyright a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+.information a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.footr {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+}
+
+/* PAGINA DE ADMINISTRADOR */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2%;
+    color: white;
+    text-align: center;
+}

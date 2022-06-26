@@ -1,0 +1,63 @@
+use test1;
+
+drop table Reserva;
+go
+CREATE TABLE Reserva (
+    Id int not null IDENTITY(1,1) Primary key,
+    Rut int NOT NULL ,
+    Correo VARCHAR (50) NOT NULL,
+	Fecha VARCHAR (10) NOT NULL,
+	Hora VARCHAR (10) NOT NULL
+)
+go
+
+
+drop proc ReservaHora;
+go
+--select * from reserva where TRY_CONVERT(date,Fecha, 103) < TRY_CONVERT(date,GETDATE(), 103);
+--go
+create proc ReservaHora(
+    
+    @Rut int ,
+    @Correo VARCHAR (50) ,
+	@Fecha VARCHAR (10),
+	@Hora VARCHAR (10)
+
+	)
+AS
+delete from reserva where TRY_CONVERT(date,Fecha, 103) < TRY_CONVERT(date,GETDATE(), 103)
+if (not exists(select 1 from Reserva ))
+begin
+          DBCC CHECKIDENT ('Reserva', RESEED, 0);
+		  end
+
+		  if (exists(select * from Reserva where Correo=@Correo ))
+		  select '1'
+		  else if (exists(select * from Reserva where Hora=@Hora and Fecha=@Fecha ))
+		  select '2'
+		  else
+		  INSERT INTO Reserva( Rut,Correo,Fecha, Hora)
+	      VALUES( @Rut,@Correo,@Fecha,@Hora)
+		  select '3'
+if (exists(select 1 from Reserva ))
+
+	
+          if (exists(select * from Reserva where Correo=@Correo ))
+		  select '1'
+		  else if (exists(select * from Reserva where Hora=@Hora and Fecha=@Fecha ))
+		  select '2'
+		  else
+		  INSERT INTO Reserva( Rut,Correo,Fecha, Hora)
+	      VALUES( @Rut,@Correo,@Fecha,@Hora)
+		  select '3'
+		
+GO
+--select * from Reserva;
+
+--delete  from Reserva where correo= 'aaa@gmail.com'
+
+--INSERT INTO Reserva( Rut,Correo,Fecha, Hora)
+	     -- VALUES('chico' ,'aaa@gmail.com','07-06-2022','10:00')
+
+
+		  --select * from cliente;

@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutLoginAdministrador.cshtml";
+}
+
+<div><br /><br /><br /><br /><br /><br /></div>
+
+<center>
+
+    <div style="background-color: whitesmoke; color: darkolivegreen; width: 50%; border-radius: 1%">
+        <h2 class="text-center">Ingreso Administrador</h2>
+        <br>
+
+        <form action="@Url.Action("Login","Administrador")" method="post">
+            <div class="mb-4">
+                <div class="candado" style="text-align: center">
+                    <img src="~/Content/img/candando.png" style="width: 200px; height: 200px; border-radius: 100%" alt="Alternate Text" />
+                </div>
+            </div>
+
+            <div class="input-group mb-3" style="display:flex; justify-content: center">
+                <div class="input-group-append">
+                    <img src="~/Content/img/correo.jpg" style="width: 30px; height: 30px" alt="Alternate Text" />
+                </div>
+                <input type="text" name="Correo" class="form-control input_user" value="" placeholder="Correo" style="width: 50%" required>
+            </div>
+            <div class="input-group mb-2" style="display: flex; justify-content: center">
+                <div class="input-group-append">
+                    <img src="~/Content/img/contrasena.png" style="width: 30px; height: 30px" alt="Alternate Text" />
+                </div>
+                <input type="password" name="Contrasena" class="form-control input_pass" value="" placeholder="Contraseña" style="width: 50%" required>
+            </div>
+
+            @if (ViewData["Mensaje"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"]
+                </div>
+            }
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="submit" name="button" class="btn login_btn" style="background-color: mediumseagreen; color: white; width: 80%">Iniciar Sesion</button>
+            </div>
+        </form>
+
+        <br>
+
+
+    </div>
+</center>

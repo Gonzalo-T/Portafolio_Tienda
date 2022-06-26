@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<Tienda.Models.Productos>
+
+@{
+    ViewBag.Title = "IndexProductos";
+    Layout = "~/Views/Shared/_LayoutClienteLogeado.cshtml";
+}
+
+
+<h2 style="color: white; text-align:center">Productos ClothesData</h2>
+
+
+
+<hr />
+<br />
+<center>
+
+    <div class="row contenedor" style="background-color: rgb(50 65 83); border-radius: 1%; ">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-md-4" style="margin-top:10px;">
+                <div style="background-color: whitesmoke; border-color: black; border-radius: 1%; text-align: center;" class="thumbnail">
+                    <h3 style="color: black">@Html.DisplayFor(modelItem => item.Nombre)</h3>
+
+                    <hr />
+                    <img style="width: 150px; height:150px; border-radius:20%" src="data:image/png;jpg;base64,@Html.DisplayFor(modelItem => item.Imagen)">
+                    <hr />
+                    <h3 style="font-size: 15px; color: black">@Html.DisplayFor(modelItem => item.Descripcion)</h3>
+
+                    <div>Precio: $@Html.DisplayFor(modelItem => item.Precio)</div>
+
+                    <hr />
+
+                    <p><a href="#" class="btn btn-success" role="button">Agregar</a> <a href="#" class="btn btn-primary" role="button">Comprar</a></p>
+
+                </div>
+            </div>
+
+        }
+    </div>
+
+</center>
+

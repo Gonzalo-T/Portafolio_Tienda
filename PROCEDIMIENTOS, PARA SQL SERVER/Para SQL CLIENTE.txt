@@ -1,0 +1,76 @@
+use test1;
+go
+
+CREATE TABLE Cliente (
+    Rut int PRIMARY KEY NOT NULL ,
+	DigitoVerificador VARCHAR (1) NOT NULL,
+    Correo VARCHAR (50) NOT NULL,
+    Nombre_usuario VARCHAR (20) NOT NULL,
+    Nombre VARCHAR (15) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL,
+    Direccion VARCHAR(50) NOT NULL,
+    Estado_civil VARCHAR (15) NOT NULL,
+    Contrasena VARCHAR (500) NOT NULL
+)
+go
+
+
+create proc RegistrarCliente(
+    @Rut int,
+	@DigitoVerificador VARCHAR (1),
+    @Correo VARCHAR (50),
+    @Nombre_usuario VARCHAR (20),
+    @Nombre VARCHAR (15),
+    @Fecha_nacimiento DATE,
+    @Direccion VARCHAR(50),
+    @Estado_civil VARCHAR (15),
+    @Contrasena VARCHAR (500)
+	)
+AS
+BEGIN
+
+	if(not exists(select * from Cliente where Rut=@Rut))
+	begin
+     INSERT INTO Cliente(Rut,DigitoVerificador,Correo,Nombre_usuario, Nombre,Fecha_nacimiento,Direccion,Estado_civil,Contrasena)
+	 VALUES(@Rut,@DigitoVerificador,@Correo,@Nombre_usuario, @Nombre,@Fecha_nacimiento,@Direccion,@Estado_civil,@Contrasena)
+
+	 end
+END
+GO
+
+
+drop proc RegistrarCliente;
+go
+
+create proc ValidarCliente(
+@Correo VARCHAR (50),
+@Contrasena VARCHAR (500)
+)
+AS
+BEGIN
+
+	if(exists(select * from Cliente where Correo=@Correo and Contrasena=@Contrasena))
+	Select Rut from Cliente where Correo=@Correo and Contrasena=@Contrasena
+	else
+	select'0'
+END
+drop proc ValidarCliente;
+go
+
+//--------------------ACTUALIZAR CLIENTE--------------------
+
+create proc ActualizarCliente(
+    @Correo VARCHAR (50),
+    @Nombre_usuario VARCHAR (20),
+    @Nombre VARCHAR (15),
+    @Fecha_nacimiento date,
+    @Direccion VARCHAR(50),
+    @Estado_civil VARCHAR (15),
+	@Rut int
+
+	)
+AS
+	update Cliente set Correo = @Correo, Nombre_usuario = @Nombre_usuario, Nombre = @Nombre, Fecha_nacimiento = @Fecha_nacimiento, 
+	Direccion = @Direccion, Estado_civil = @Estado_civil where Rut = @Rut
+
+GO

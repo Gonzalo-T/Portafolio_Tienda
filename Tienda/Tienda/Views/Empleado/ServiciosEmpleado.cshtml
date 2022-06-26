@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLoginEmpleado.cshtml";
+}
+<center>
+    <div class="container">
+
+        <div class="col-sm-6 col-md-6" style="margin-top:10px;">
+            <div style="background-color: whitesmoke; border-color: black; border-radius: 1%; width: 400px; height:300px; text-align: center;" class="thumbnail">
+
+                <a style="font-size: 30px;" href="@Url.Action("TablaContacto", "Empleado") ">Tabla contactos</a>
+                <div><img style="width: 200px; height: 200px" src="~/Content/img/Contacto.png" alt="Alternate Text" /></div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6" style="margin-top:10px;">
+            <div style="background-color: whitesmoke; border-color: black; border-radius: 1%; width: 400px; height:300px; text-align: center;" class="thumbnail">
+
+                <a style="font-size: 30px" href="@Url.Action("IngresarProducto", "Empleado") ">Ingreso de Productos</a>
+                <div><img style="width: 200px; height: 200px" src="~/Content/img/ProductosEmpleado.png" alt="Alternate Text" /></div>
+            </div>
+        </div>
+    </div>
+</center>

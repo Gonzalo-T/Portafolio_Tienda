@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="test1" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IBM-PF3610T8;Initial Catalog=test1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="test1ConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.ActualizarEmpleado" Method="ActualizarEmpleado">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Nombre_usuario" Parameter="nombre_usuario" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Fecha_nacimiento" Parameter="fecha_nacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Estado_civil" Parameter="estado_civil" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

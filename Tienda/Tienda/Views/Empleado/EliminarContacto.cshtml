@@ -1,0 +1,137 @@
+﻿@model Tienda.Models.Contacto
+
+@{
+    Layout = "~/Views/Shared/_LayoutLoginEmpleado.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<center>
+    <div class="container" style="background-color: whitesmoke; color: darkolivegreen; width:60%;  border-radius : 1%">
+
+
+
+        <h2 class="text-center">Eliminar Contacto</h2>
+        <br>
+
+        <form action="@Url.Action("EliminarContacto", "Empleado")" method="post">
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Id Mensaje:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/correo.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="number" name="Id" class="form-control input_user" value="@Model.Id" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Nombre:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/correo.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Nombre" class="form-control input_user" value="@Model.Nombre" required readonly />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Apellido:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/nombreUsuario.jpg" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Apellido" class="form-control input_user" value="@Model.Apellido" placeholder="Nombre de usuario" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Correo:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Nombre.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="email" name="Correo" class="form-control input_user" value="@Model.Correo" placeholder="Miguel Montecinos" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Telefono:</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/fecha.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="number" name="Telefono" class="form-control input_user" value="@Model.Telefono" placeholder="12/04/1990" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label style="text-align:center">Mensaje</label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <img src="~/Content/img/Direccion.png" style="width: 20px; height: 20px" alt="Alternate Text" />
+                        </span>
+                        <input type="text" name="Mensaje" class="form-control input_user" value="@Model.Mensaje" placeholder="Las papas 435, Santiago" required readonly>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <button type="submit" name="button" class="btn btn-primary">
+
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+    </div>
+
+
+
+</center>
+
